@@ -8,6 +8,14 @@ public class GameConstants: MonoBehaviour
 
     private void Awake()
     {
-        GameConstants.gameConstants = this;
+        DontDestroyOnLoad(this.gameObject);
+        if(GameConstants.gameConstants == null)
+        {
+            GameConstants.gameConstants = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
