@@ -14,6 +14,9 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public static PhotonLobby photonLobby;
 
     public PlayerController localPlayer;
+
+    public int MenuSceneIndex;
+    public int MainSceneIndex;
     
     public void Awake()
     {
@@ -52,7 +55,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        PhotonNetwork.LoadLevel(MainSceneIndex);
     }
 
     public override void OnJoinedRoom()
@@ -77,7 +80,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("Disconnected.");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        PhotonNetwork.LoadLevel(0);
+        PhotonNetwork.LoadLevel(MenuSceneIndex);
         StartCoroutine(ReconnectToServers());
     }
 

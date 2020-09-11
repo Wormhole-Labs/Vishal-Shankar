@@ -756,6 +756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayers: 2
   localPlayer: {fileID: 0}
+  MenuSceneIndex: 0
+  MainSceneIndex: 1
 --- !u!1 &912044071
 GameObject:
   m_ObjectHideFlags: 0

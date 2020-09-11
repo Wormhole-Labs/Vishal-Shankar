@@ -53,7 +53,7 @@ public class MenuUIController : MonoBehaviour
     {
         if(GameConstants.gameConstants.selectedCharacter != null)
         {
-            PhotonNetwork.LoadLevel(1);
+            PhotonNetwork.LoadLevel(PhotonLobby.photonLobby.MainSceneIndex);
         }
     }
 }
