@@ -9,7 +9,7 @@ using ExitGames.Client.Photon;
 
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
-    public string globalRoomName;
+    public int maxPlayers;
 
     public static PhotonLobby photonLobby;
 
@@ -40,7 +40,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
        if(scene.buildIndex == 1 && localPlayer == null)
         {
-            PhotonNetwork.JoinRoom(globalRoomName);
+            PhotonNetwork.JoinRandomRoom();
        }
     }
     
@@ -61,13 +61,14 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         localPlayer = FindObjectOfType<CharacterSpawner>().SpawnCharacter();
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
+    public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("Failed to join room. Creating new..");
         RoomOptions roomOps = new RoomOptions();
+        roomOps.MaxPlayers = (byte)maxPlayers;
         roomOps.IsOpen = true;
         roomOps.IsVisible = true;
-        PhotonNetwork.CreateRoom(globalRoomName, roomOps, null);
+        PhotonNetwork.CreateRoom("room", roomOps, null);
     }
 
 

@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e079748e521ea974189cb85f0c1af87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalRoomName: Room
+  maxPlayers: 2
   localPlayer: {fileID: 0}
 --- !u!1 &912044071
 GameObject:
