@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     float rotateSpeed;
     
     public Transform cam;
-    
+
+    float hor;
     float ver;
     
     public Transform myEmote;
@@ -64,12 +65,14 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
             if (!paused)
             {
                 ver = Input.GetAxisRaw("Vertical");
+                hor = Input.GetAxisRaw("Horizontal");
 
                 transform.Rotate(0, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime, 0);
 
                 var forwardVector = transform.forward.normalized * walkSpeed * Time.deltaTime * ver;
+                var horizontalVector = transform.right.normalized * walkSpeed * Time.deltaTime * hor;
 
-                cc.Move(forwardVector);
+                cc.Move(forwardVector + horizontalVector);
 
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {

@@ -17,5 +17,5 @@ MonoBehaviour:
   emojiTime: 5
   cameraDistance: 3.5
   cameraHeight: 3
-  cameraTiltRange: {x: 10, y: 25}
+  cameraTiltRange: {x: 1, y: 35}
   cameraTiltSpeed: 100
