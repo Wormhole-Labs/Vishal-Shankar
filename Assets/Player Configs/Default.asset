@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   walkSpeed: 3
-  rotateSpeed: 500
+  rotateSpeed: 5
   emojiTime: 5
-  cameraDistance: 3.5
-  cameraHeight: 3
-  cameraTiltRange: {x: 1, y: 35}
-  cameraTiltSpeed: 100
+  cameraDistance: 3.88
+  cameraHeight: 0.77
+  cameraTiltRange: {x: -10.5, y: 30}
+  cameraTiltSpeed: 150

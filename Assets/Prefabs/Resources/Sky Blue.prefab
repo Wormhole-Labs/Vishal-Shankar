@@ -159,6 +159,7 @@ MonoBehaviour:
   remotePosition: {x: 0, y: 0, z: 0}
   remoteRotation: {x: 0, y: 0, z: 0}
   paused: 0
+  cameraTarget: {fileID: 0}
 --- !u!114 &543267882149456674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +178,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 6501196682478596167}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

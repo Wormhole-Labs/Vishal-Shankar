@@ -158,6 +158,8 @@ MonoBehaviour:
   myEmote: {fileID: 0}
   remotePosition: {x: 0, y: 0, z: 0}
   remoteRotation: {x: 0, y: 0, z: 0}
+  paused: 0
+  cameraTarget: {fileID: 0}
 --- !u!114 &5138814113330438137
 MonoBehaviour:
   m_ObjectHideFlags: 0

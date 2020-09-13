@@ -159,6 +159,7 @@ MonoBehaviour:
   remotePosition: {x: 0, y: 0, z: 0}
   remoteRotation: {x: 0, y: 0, z: 0}
   paused: 0
+  cameraTarget: {fileID: 0}
 --- !u!114 &708133571809790100
 MonoBehaviour:
   m_ObjectHideFlags: 0
