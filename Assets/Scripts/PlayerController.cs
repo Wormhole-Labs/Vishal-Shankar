@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
     void TiltCamera()
     {
-        mouseX += Input.GetAxis("Mouse X") * playerConfig.cameraTiltSpeed * Time.deltaTime;
+        mouseX += Input.GetAxis("Mouse X") * playerConfig.rotateSpeed * Time.deltaTime;
         mouseY += -Input.GetAxis("Mouse Y") * playerConfig.cameraTiltSpeed * Time.deltaTime;
         mouseY = Mathf.Clamp(mouseY, playerConfig.cameraTiltRange.x, playerConfig.cameraTiltRange.y);
 
