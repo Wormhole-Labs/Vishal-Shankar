@@ -57,8 +57,6 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
             cam = Camera.main.transform;
             cameraTarget = new GameObject("CameraAnchor").transform;
-            cameraTarget.parent = transform;
-            cam.parent = cameraTarget;
             
             UIController.uIController.myPlayer = this;
 
@@ -97,39 +95,33 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
                 }
 
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, cameraTarget.eulerAngles.y, transform.eulerAngles.z);
+
+                TiltCamera();
             }
         }
     }
 
     void LateUpdate()
     {
-        if (pv.IsMine)
-        {
-            if(!paused)
-            {
-                TiltCamera();
-            }
-        }
-        else
+        if(!pv.IsMine)
         {
             transform.position = Vector3.Lerp(transform.position, remotePosition, 0.1f);
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, remoteRotation, 0.1f);
             myEmote.transform.eulerAngles = new Vector3(myEmote.transform.eulerAngles.x, PhotonLobby.photonLobby.localPlayer.transform.eulerAngles.y, myEmote.transform.eulerAngles.z);
         }
     }
-
+    
     void TiltCamera()
     {
         mouseX += Input.GetAxis("Mouse X") * playerConfig.rotateSpeed * Time.deltaTime;
         mouseY += -Input.GetAxis("Mouse Y") * playerConfig.cameraTiltSpeed * Time.deltaTime;
         mouseY = Mathf.Clamp(mouseY, playerConfig.cameraTiltRange.x, playerConfig.cameraTiltRange.y);
 
-        cameraTarget.localPosition = new Vector3(0, playerConfig.cameraHeight, 0);
-        cam.localPosition = new Vector3(0, 0, -playerConfig.cameraDistance);
-
-        cam.LookAt(cameraTarget);
-
         cameraTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        cameraTarget.position = new Vector3(transform.position.x, playerConfig.cameraHeight, transform.position.z);
+        var dir = -cameraTarget.forward.normalized * playerConfig.cameraDistance;
+        cam.position = new Vector3(cameraTarget.position.x + dir.x, Mathf.Clamp(cameraTarget.position.y + dir.y, 0, cameraTarget.position.y + 2f), cameraTarget.position.z + dir.z);
+        cam.LookAt(cameraTarget.position);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

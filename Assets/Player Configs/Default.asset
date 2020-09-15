@@ -15,7 +15,7 @@ MonoBehaviour:
   walkSpeed: 3
   rotateSpeed: 300
   emojiTime: 5
-  cameraDistance: 2.6
-  cameraHeight: 0.2
-  cameraTiltRange: {x: -10.5, y: 55}
+  cameraDistance: 2.2
+  cameraHeight: 1.27
+  cameraTiltRange: {x: -10.5, y: 80}
   cameraTiltSpeed: 150
